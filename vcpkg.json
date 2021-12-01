@@ -1,0 +1,16 @@
+{
+    "name": "wba",
+    "version-string": "1.0.0",
+    "description": "Fix bound bow adding weight in survival for Skyrim Special Edition",
+    "homepage": "https://github.com/Seally/survivalboundbowfix",
+    "license": "MIT",
+    "dependencies": [
+        "boost-container-hash",
+        "boost-stl-interfaces",
+        "rsm-binary-io",
+        "spdlog",
+        "xbyak",
+        "tomlplusplus",
+        "fmt"
+    ]
+}
