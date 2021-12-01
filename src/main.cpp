@@ -102,7 +102,7 @@ extern "C" DLLEXPORT constinit auto SKSEPlugin_Version = []() {
     v.AuthorName("Seally");
     v.UsesAddressLibrary(true);
     v.UsesSigScanning(false);
-    v.CompatibleVersions({SKSE::RUNTIME_1_6_323});
+    v.CompatibleVersions({SKSE::RUNTIME_1_6_318});
 
     return v;
 }();
