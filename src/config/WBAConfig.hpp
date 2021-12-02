@@ -43,7 +43,8 @@ public:
     void readConfigs();
     void loadGameForms(RE::TESDataHandler* dataHandler);
 
-    bool isWeightlessArrow(RE::TESBoundObject* const obj) const {
+    bool isWeightlessArrow(RE::TESBoundObject* const obj) const
+    {
         return _weightlessArrowForms.contains(obj);
     }
 };

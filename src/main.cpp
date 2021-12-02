@@ -86,7 +86,7 @@ extern "C" DLLEXPORT bool SKSEAPI
 extern "C" DLLEXPORT bool SKSEAPI
     SKSEPlugin_Load(const SKSE::LoadInterface* skse)
 {
-    LOG_INFO_FMT("Loaded {} v{}", version::PROJECT, version::NAME);   
+    LOG_INFO_FMT("Loaded {} v{}", version::PROJECT, version::NAME);
 
     SKSE::Init(skse);
 

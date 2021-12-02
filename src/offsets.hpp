@@ -18,7 +18,8 @@ namespace re {
     namespace fix {
         namespace survivalboundarrowweight {
             constexpr std::ptrdiff_t patchOffset = VERSION_SPECIFIC(0x85, 0x77);
-            constexpr std::ptrdiff_t continueOffset = VERSION_SPECIFIC(0xd1, 0xb1);
+            constexpr std::ptrdiff_t continueOffset =
+                VERSION_SPECIFIC(0xd1, 0xb1);
             constexpr std::ptrdiff_t exitOffset = VERSION_SPECIFIC(0xdb, 0xbf);
         } // namespace survivalboundarrowweight
     } // namespace fix

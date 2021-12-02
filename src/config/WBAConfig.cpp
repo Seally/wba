@@ -145,8 +145,7 @@ void WBAConfig::_loadWeightlessArrowForms(RE::TESDataHandler* const dataHandler)
             _checkFormIsAmmo(form);
 
             _weightlessArrowForms.emplace(form->As<RE::TESBoundObject>());
-        }
-        catch (const std::exception& error) {
+        } catch (const std::exception& error) {
             printError(error);
         }
     }
