@@ -122,7 +122,6 @@ set(SOURCES
     src/config/FormId.hpp
     src/config/FormId.cpp
     src/config/ParseError.hpp
-    src/config/ParseError.cpp
     src/config/WBAConfig.hpp
     src/config/WBAConfig.cpp
     src/formatters/TESBoundObject.hpp

@@ -11,6 +11,7 @@ bool setUpLogging()
 {
     using namespace std::literals;
     namespace logger = SKSE::log;
+    using namespace meta;
 
     auto path = logger::log_directory();
     if (!path.has_value()) {
@@ -18,7 +19,7 @@ bool setUpLogging()
         return false;
     }
 
-    *path /= version::PROJECT;
+    *path /= std::string(meta::NAME) + "_" + std::string(version::SKYRIM);
     *path += ".log"sv;
     auto sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
         path->string(),
@@ -36,7 +37,7 @@ bool setUpLogging()
     spdlog::set_default_logger(std::move(log));
     spdlog::set_pattern("%g(%#): [%^%l%$] %v"s);
 
-    LOG_INFO_FMT("{} v{}"sv, version::PROJECT, version::NAME);
+    LOG_INFO_FMT("Loaded {} v{}"sv, NAME, version::FULL_STRING);
 
     return true;
 }
@@ -63,10 +64,12 @@ bool setUpLogging()
 extern "C" DLLEXPORT bool SKSEAPI
     SKSEPlugin_Query(const SKSE::QueryInterface* skse, SKSE::PluginInfo* info)
 {
+    using namespace meta;
+
     setUpLogging();
 
     info->infoVersion = SKSE::PluginInfo::kVersion;
-    info->name = version::PROJECT.data();
+    info->name = NAME.data();
     info->version = version::MAJOR;
 
     if (skse->IsEditor()) {
@@ -86,19 +89,19 @@ extern "C" DLLEXPORT bool SKSEAPI
 extern "C" DLLEXPORT bool SKSEAPI
     SKSEPlugin_Load(const SKSE::LoadInterface* skse)
 {
-    LOG_INFO_FMT("Loaded {} v{}", version::PROJECT, version::NAME);
-
     SKSE::Init(skse);
 
     return installSurvivalBoundArrowWeightFix();
 }
 #elif defined(SKYRIM_VERSION_AE)
 extern "C" DLLEXPORT constinit auto SKSEPlugin_Version = []() {
+    using namespace meta;
+
     SKSE::PluginVersionData v;
 
     v.PluginVersion(
         REL::Version(version::MAJOR, version::MINOR, version::PATCH));
-    v.PluginName(version::PROJECT);
+    v.PluginName(NAME);
     v.AuthorName("Seally");
     v.UsesAddressLibrary(true);
     v.UsesSigScanning(false);
@@ -111,7 +114,11 @@ extern "C" DLLEXPORT bool SKSEPlugin_Load(const SKSE::LoadInterface* skse)
 {
     setUpLogging();
 
-    LOG_INFO_FMT("Loaded {} v{}", version::PROJECT, version::NAME);
+    if (skse->IsEditor()) {
+        LOG_CRITICAL("Loaded in editor, marking as incompatible"sv);
+        return false;
+    }
+
     SKSE::Init(skse);
 
     return installSurvivalBoundArrowWeightFix();

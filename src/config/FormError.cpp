@@ -5,10 +5,6 @@
 
 using namespace std::literals;
 
-FormError::FormError(const std::string& message)
-    : std::runtime_error(message)
-{}
-
 UnexpectedFormTypeError::UnexpectedFormTypeError(
     const RE::FormType expectedFormType,
     const RE::FormType receivedFormType,
