@@ -99,9 +99,9 @@ struct _Patch : Xbyak::CodeGenerator {
         jmp(ptr[rip + exitLabel]);
 
         L(continueOverwrittenLabel);
-#ifdef SKYRIM_VERSION_SE
+#if defined(SKYRIM_VERSION_SE)
         lea(rdi, ptr[rbx + 0x0b0]);
-#elif SKYRIM_VERSION_AE
+#elif defined(SKYRIM_VERSION_AE)
         mov(eax, 0x0b0);
 #else
 #    error "Invalid Skyrim version."
