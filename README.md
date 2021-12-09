@@ -113,6 +113,7 @@ if you don't have the compiler installed.
             "name": "x64-Debug-SE-MSVC142",
             "inherits": [ "base-vs2022", "se" ],
             "cacheVariables": {
+                "COPY_BUILD": true,
                 "SKYRIM64_DATA_PATH": "D:/Games/MO2 Data/SkyrimSE/mods/WBA - SKSE Plugin (Debug)"
             }
         },
@@ -120,6 +121,7 @@ if you don't have the compiler installed.
             "name": "x64-Release-SE-MSVC142",
             "inherits": [ "base-vs2022", "se" ],
             "cacheVariables": {
+                "COPY_BUILD": true,
                 "SKYRIM64_DATA_PATH": "D:/Games/MO2 Data/SkyrimSE/mods/WBA - SKSE Plugin"
             }
         },
@@ -127,6 +129,7 @@ if you don't have the compiler installed.
             "name": "x64-Debug-AE-MSVC142",
             "inherits": [ "base-vs2022", "ae" ],
             "cacheVariables": {
+                "COPY_BUILD": true,
                 "SKYRIM64_DATA_PATH": "D:/Games/MO2 Data/SkyrimAE/mods/WBA - SKSE Plugin (Debug)"
             }
         },
@@ -134,6 +137,7 @@ if you don't have the compiler installed.
             "name": "x64-Release-AE-MSVC142",
             "inherits": [ "base-vs2022", "ae" ],
             "cacheVariables": {
+                "COPY_BUILD": true,
                 "SKYRIM64_DATA_PATH": "D:/Games/MO2 Data/SkyrimAE/mods/WBA - SKSE Plugin"
             }
         }
@@ -165,5 +169,4 @@ if you don't have the compiler installed.
         }
     ]
 }
-
 ```

@@ -19,7 +19,7 @@
             },
             "cacheVariables": {
                 "SKSE_SUPPORT_XBYAK": true,
-                "COPY_BUILD": true,
+                "COPY_BUILD": false,
                 "CMAKE_TOOLCHAIN_FILE": {
                     "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
                     "type": "FILEPATH"
