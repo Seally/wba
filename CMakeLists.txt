@@ -35,21 +35,11 @@ set_property(CACHE SKYRIM_VERSION PROPERTY STRINGS "AE" "SE")
 
 # ---- Project ----
 
-if(SKYRIM_VERSION STREQUAL "SE")
-    project(
-        WBA_SE
-        VERSION 1.0.0
-        LANGUAGES CXX
-    )
-elseif(SKYRIM_VERSION STREQUAL "AE")
-    project(
-        WBA_AE
-        VERSION 1.0.0
-        LANGUAGES CXX
-    )
-else()
-    message(FATAL_ERROR "Unknown Skyrim version: ${SKYRIM_VERSION}")
-endif()
+project(
+    WBA
+    VERSION 1.0.0
+    LANGUAGES CXX
+)
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/version.hpp.in
