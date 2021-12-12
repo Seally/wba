@@ -20,7 +20,7 @@ class WBAConfig {
 
     explicit WBAConfig() {}
 
-    void _readIndividualConfigs();
+    void _loadIndividualConfigFiles();
     std::size_t _readAndCountConfigs(const toml::table& table);
 
     void _loadWeightlessArrowForms(RE::TESDataHandler* dataHandler);
@@ -40,7 +40,7 @@ public:
 
     // These functions needs to be called manually.
     // loadGameForms() must be run only after readConfig finishes.
-    void readConfigs();
+    void loadConfigsFromFile();
     void loadGameForms(RE::TESDataHandler* dataHandler);
 
     bool isWeightlessArrow(RE::TESBoundObject* const obj) const

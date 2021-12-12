@@ -19,7 +19,26 @@
 
 using namespace std::literals;
 
-void WBAConfig::_readIndividualConfigs()
+namespace {
+    void _checkFormIsNotNull(RE::TESForm* form, const FormId& formId)
+    {
+        if (form == nullptr) {
+            throw MissingFormError(formId);
+        }
+    }
+
+    void _checkFormIsAmmo(RE::TESForm* form)
+    {
+        if (!form->IsAmmo()) {
+            throw UnexpectedFormTypeError(
+                RE::FormType::Ammo,
+                form->GetFormType(),
+                form->GetName());
+        }
+    }
+} // namespace
+
+void WBAConfig::_loadIndividualConfigFiles()
 {
     std::vector<std::filesystem::path> configPaths;
 
@@ -110,28 +129,11 @@ std::size_t WBAConfig::_readAndCountConfigs(const toml::table& table)
     return validConfigsCount;
 }
 
-void WBAConfig::readConfigs() { _readIndividualConfigs(); }
+void WBAConfig::loadConfigsFromFile() { _loadIndividualConfigFiles(); }
 
 void WBAConfig::loadGameForms(RE::TESDataHandler* const dataHandler)
 {
     _loadWeightlessArrowForms(dataHandler);
-}
-
-void _checkFormIsNotNull(RE::TESForm* form, const FormId& formId)
-{
-    if (form == nullptr) {
-        throw MissingFormError(formId);
-    }
-}
-
-void _checkFormIsAmmo(RE::TESForm* form)
-{
-    if (!form->IsAmmo()) {
-        throw UnexpectedFormTypeError(
-            RE::FormType::Ammo,
-            form->GetFormType(),
-            form->GetName());
-    }
 }
 
 void WBAConfig::_loadWeightlessArrowForms(RE::TESDataHandler* const dataHandler)
